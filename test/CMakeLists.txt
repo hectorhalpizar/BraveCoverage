@@ -26,8 +26,16 @@ set(OBJECT_DIR ${CMAKE_BINARY_DIR}/CMakeFiles/TestBraveCoverage.dir/src)
 message("-- Object files will be output to: ${OBJECT_DIR}")
 
 # Find required packages
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
+# find_package(GTest REQUIRED)
+# include_directories(${GTEST_INCLUDE_DIRS})
+
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    URL https://github.com/hectorhalpizar/googletest/archive/refs/heads/master.zip)
+# For Windows: Prevent overriding the parent project's compile
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
 # Set the sources
 set(sources
@@ -87,6 +95,8 @@ add_custom_target(init
 enable_testing()
 
 add_test(output_test ${CMAKE_CURRENT_BINARY_DIR}/TestBraveCoverage)
+
+include(GoogleTest)
 
 # link Boost libraries to the new target
 target_link_libraries(TestBraveCoverage gtest)
