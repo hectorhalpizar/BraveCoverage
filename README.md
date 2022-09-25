@@ -4,6 +4,14 @@ Code coverage startup for C++ project using GCov and LCov
 # Prerequisites
 `gcov` and `lcov` needs to be installed. 
 
+Boost Library is requiered. In case Boost is not installed, run the following command.
+
+
+```
+sudo apt install build-essential libboost-system-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev
+```
+
+
 # Build Application
 ```
 mkdir build && cd build
